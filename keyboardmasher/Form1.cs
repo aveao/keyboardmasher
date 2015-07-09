@@ -17,10 +17,10 @@ namespace keyboardmasher
         public Form1()
         {
             InitializeComponent();
-            numericUpDown1.Maximum = int.MaxValue;
-            numericUpDown1.Value = timer1.Interval;
+            numericUpDown1.Maximum = int.MaxValue; //see line 69 and 70 to understand why
+            numericUpDown1.Value = timer1.Interval; //so it can be modified from form view
             numericUpDown2.Value = timer2.Interval;
-            keytoclick = Convert.ToInt32(ConvertCharToVirtualKey("w".ToCharArray()[0]));
+            keytoclick = Convert.ToInt32(ConvertCharToVirtualKey("w".ToCharArray()[0])); //a bit too long, eh?
         }
 
         #region keyclick
@@ -43,11 +43,7 @@ namespace keyboardmasher
         }
 
         //these are virtual key codes for keys
-        const int VK_UP = 0x26; //up key
-        const int VK_DOWN = 0x28;  //down key
-        const int VK_LEFT = 0x25;
-        const int VK_RIGHT = 0x27;
-        const uint KEYEVENTF_KEYUP = 0x0002;
+        const uint KEYEVENTF_KEYUP = 0x0002; //http://tksinghal.blogspot.com/2011/04/how-to-press-and-hold-keyboard-key.html
         const uint KEYEVENTF_EXTENDEDKEY = 0x0001;
         int press(int keycode) //left as int because 1) it might be important. 2) because why not?
         {
@@ -56,7 +52,7 @@ namespace keyboardmasher
             return 0;
 
         }
-        int release(int keycode)
+        int release(int keycode) 
         {
             //Release the key
             keybd_event((byte)keycode, 0, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
@@ -87,21 +83,20 @@ namespace keyboardmasher
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            //timer2's interval must be shorter than timer1. else, bugs will come.
+            //timer2's interval must be shorter than timer1. else = bug...
             numericUpDown2.Maximum = numericUpDown1.Value - 1;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            timer1.Enabled = true;
+            timer1.Enabled = true; //2 enables automatically
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             timer1.Enabled = false;
-            timer2.Enabled = true;
+            timer2.Enabled = true; //run once more, so it'll disable
             release(keytoclick); //just in case
         }
-
     }
 }
