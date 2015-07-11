@@ -116,11 +116,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(39, 61);
+            this.label3.Location = new System.Drawing.Point(12, 61);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(130, 13);
+            this.label3.Size = new System.Drawing.Size(185, 13);
             this.label3.TabIndex = 7;
-            this.label3.Text = "1000 = 1 sec. 1 = 1 msec.";
+            this.label3.Text = "1000 = 1 sec. F3 to toggle from away.";
             // 
             // timer2
             // 

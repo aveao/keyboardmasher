@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gma.System.MouseKeyHook;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +22,8 @@ namespace keyboardmasher
             numericUpDown1.Value = timer1.Interval; //so it can be modified from form view
             numericUpDown2.Value = timer2.Interval;
             keytoclick = Convert.ToInt32(ConvertCharToVirtualKey("w".ToCharArray()[0])); //a bit too long, eh?
+
+            Sub();
         }
 
         #region keyclick
@@ -52,7 +55,7 @@ namespace keyboardmasher
             return 0;
 
         }
-        int release(int keycode) 
+        int release(int keycode)
         {
             //Release the key
             keybd_event((byte)keycode, 0, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
@@ -60,9 +63,6 @@ namespace keyboardmasher
         }
         #endregion
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -86,6 +86,16 @@ namespace keyboardmasher
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Enable();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Disable();
+        }
+
+        void Enable()
+        {
             timer1.Enabled = true; //2 enables automatically
 
             timer1.Interval = Convert.ToInt32(numericUpDown1.Value); //autosave
@@ -96,7 +106,7 @@ namespace keyboardmasher
             button2.Enabled = false;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        void Disable()
         {
             timer1.Enabled = false;
             timer2.Enabled = true; //run once more, so it'll disable
@@ -104,6 +114,32 @@ namespace keyboardmasher
 
             button3.Enabled = false;
             button2.Enabled = true;
+        }
+
+        void Toggle()
+        {
+            if (button3.Enabled == false)
+            {
+                Enable();
+            }
+            else
+            {
+                Disable();
+            }
+        }
+        private IKeyboardMouseEvents m_GlobalHook;
+        void Sub()
+        {
+            m_GlobalHook = Hook.GlobalEvents();
+            m_GlobalHook.KeyUp += m_GlobalHook_KeyUp;
+        }
+
+        void m_GlobalHook_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.F3)
+            {
+                Toggle();
+            }
         }
     }
 }
