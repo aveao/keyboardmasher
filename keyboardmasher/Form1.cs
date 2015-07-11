@@ -62,9 +62,6 @@ namespace keyboardmasher
 
         private void button1_Click(object sender, EventArgs e)
         {
-            timer1.Interval = Convert.ToInt32(numericUpDown1.Value);
-            timer2.Interval = Convert.ToInt32(numericUpDown2.Value);
-            keytoclick = Convert.ToInt32(ConvertCharToVirtualKey(textBox1.Text.ToCharArray()[0]));
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -90,6 +87,13 @@ namespace keyboardmasher
         private void button2_Click(object sender, EventArgs e)
         {
             timer1.Enabled = true; //2 enables automatically
+
+            timer1.Interval = Convert.ToInt32(numericUpDown1.Value); //autosave
+            timer2.Interval = Convert.ToInt32(numericUpDown2.Value);
+            keytoclick = Convert.ToInt32(ConvertCharToVirtualKey(textBox1.Text.ToCharArray()[0]));
+
+            button3.Enabled = true;
+            button2.Enabled = false;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -97,6 +101,9 @@ namespace keyboardmasher
             timer1.Enabled = false;
             timer2.Enabled = true; //run once more, so it'll disable
             release(keytoclick); //just in case
+
+            button3.Enabled = false;
+            button2.Enabled = true;
         }
     }
 }

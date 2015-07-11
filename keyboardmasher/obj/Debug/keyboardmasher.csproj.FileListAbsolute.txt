@@ -1,0 +1,9 @@
+C:\Users\Ardao\documents\visual studio 2013\Projects\keyboardmasher\keyboardmasher\bin\Debug\keyboardmasher.exe.config
+C:\Users\Ardao\documents\visual studio 2013\Projects\keyboardmasher\keyboardmasher\bin\Debug\keyboardmasher.exe
+C:\Users\Ardao\documents\visual studio 2013\Projects\keyboardmasher\keyboardmasher\bin\Debug\keyboardmasher.pdb
+C:\Users\Ardao\documents\visual studio 2013\Projects\keyboardmasher\keyboardmasher\obj\Debug\keyboardmasher.csprojResolveAssemblyReference.cache
+C:\Users\Ardao\documents\visual studio 2013\Projects\keyboardmasher\keyboardmasher\obj\Debug\keyboardmasher.Form1.resources
+C:\Users\Ardao\documents\visual studio 2013\Projects\keyboardmasher\keyboardmasher\obj\Debug\keyboardmasher.Properties.Resources.resources
+C:\Users\Ardao\documents\visual studio 2013\Projects\keyboardmasher\keyboardmasher\obj\Debug\keyboardmasher.csproj.GenerateResource.Cache
+C:\Users\Ardao\documents\visual studio 2013\Projects\keyboardmasher\keyboardmasher\obj\Debug\keyboardmasher.exe
+C:\Users\Ardao\documents\visual studio 2013\Projects\keyboardmasher\keyboardmasher\obj\Debug\keyboardmasher.pdb
